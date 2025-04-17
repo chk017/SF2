@@ -299,17 +299,17 @@ public class Link extends SimpleLib {
 		switch (type) {
 
 		case ID:
-			sAttributeValue = getDriver().findElement(By.id(sElement)).getAttribute(sAttributeName);
+			sAttributeValue = getDriver().findElement(By.id(sElement)).getDomProperty(sAttributeName);
 			break;
 		case NAME:
-			sAttributeValue = getDriver().findElement(By.name(sElement)).getAttribute(sAttributeName);
+			sAttributeValue = getDriver().findElement(By.name(sElement)).getDomProperty(sAttributeName);
 			break;
 		case XPATH:
 			waitForElement(sAttributeName);
-			sAttributeValue = getDriver().findElement(By.xpath(sElement)).getAttribute(sAttributeName);
+			sAttributeValue = getDriver().findElement(By.xpath(sElement)).getDomProperty(sAttributeName);
 			break;
 		case CSS:
-			sAttributeValue = getDriver().findElement(By.cssSelector(sElement)).getAttribute(sAttributeName);
+			sAttributeValue = getDriver().findElement(By.cssSelector(sElement)).getDomProperty(sAttributeName);
 			break;
 		}
 		return sAttributeValue;

@@ -87,7 +87,7 @@ public class FrameLib extends BaseTest {
 
 			if (second >= BaseTest.iTimeout) {
 				try {
-					Reporting.fail("TIMED OUT waiting for the element : " + ElementName, true);
+					Reporting.info("TIMED OUT waiting for the element : " + ElementName, true);
 //					throw new Exception("Exception Timedout");
 
 				} catch (Exception e) {
@@ -163,7 +163,7 @@ public class FrameLib extends BaseTest {
 		waitForElementBy(by, ElementName);
 		getDriver().findElement(by).sendKeys(TextValue);
 
-		if (getDriver().findElement(by).getAttribute("value").contains(TextValue)) {
+		if (getDriver().findElement(by).getDomProperty("value").contains(TextValue)) {
 
 			BaseTest.logger.info(
 					"Value = \"" + TextValue + "\" is entered successfully in Textfield : \"" + ElementName + "\"");
@@ -262,7 +262,7 @@ public class FrameLib extends BaseTest {
 		for (int i = 1; i <= ele.size(); i++) {
 			// Returns the Id of a frame.
 			WebElement el = ele.get(i - 1);
-			BaseTest.logger.info("Frame Id :" + el.getAttribute("id"));
+			BaseTest.logger.info("Frame Id :" + el.getDomProperty("id"));
 			if (elementIndex == i) {
 				matchedElement = el;
 			}

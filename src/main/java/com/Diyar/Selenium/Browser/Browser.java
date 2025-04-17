@@ -178,6 +178,10 @@ public class Browser extends BaseTest{
 
 	private void chromeSetup() {
 
+//		WebDriverManager.chromedriver().clearDriverCache().setup();
+//		WebDriverManager.chromedriver().clearResolutionCache().setup();
+		
+		
 		ChromeOptions options = new ChromeOptions();
 		
 		if(BoolBrowserExtensionRequired)

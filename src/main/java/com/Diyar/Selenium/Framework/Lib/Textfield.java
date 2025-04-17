@@ -131,14 +131,14 @@ public class Textfield extends SimpleLib {
 				hidePassword = true;
 			}
 
-			if ((getDriver().findElement(By.id(sElement)).getAttribute("value").contains(Valuetopass)) && (hidePassword) && !Valuetopass.isBlank()) {
+			if ((getDriver().findElement(By.id(sElement)).getDomProperty("value").contains(Valuetopass)) && (hidePassword) && !Valuetopass.isBlank()) {
 
 				Reporting.pass(
 						"Value = \"" + "XXXXXXXXXX" + "\" is entered successfully in Textfield : \"" + fieldname + "\"");
 				BaseTest.logger.info(
 						"Value = \"" + Valuetopass + "\" is entered successfully in Textfield : \"" + fieldname + "\"");
 
-			}	else if (getDriver().findElement(By.id(sElement)).getAttribute("value").contains(Valuetopass)) {
+			}	else if (getDriver().findElement(By.id(sElement)).getDomProperty("value").contains(Valuetopass)) {
 				Reporting.pass(
 						"Value = \"" + Valuetopass + "\" is entered successfully in Textfield : \"" + fieldname + "\"");
 				BaseTest.logger.info(
@@ -162,14 +162,14 @@ public class Textfield extends SimpleLib {
 				hidePassword = true;
 			}
 
-			if ((getDriver().findElement(By.name(sElement)).getAttribute("value").contains(Valuetopass)) && (hidePassword) && !Valuetopass.isBlank()) {
+			if ((getDriver().findElement(By.name(sElement)).getDomProperty("value").contains(Valuetopass)) && (hidePassword) && !Valuetopass.isBlank()) {
 
 				Reporting.pass(
 						"Value = \"" + "XXXXXXXXXX" + "\" is entered successfully in Textfield : \"" + fieldname + "\"");
 				BaseTest.logger.info(
 						"Value = \"" + Valuetopass + "\" is entered successfully in Textfield : \"" + fieldname + "\"");
 
-			}	else if (getDriver().findElement(By.name(sElement)).getAttribute("value").contains(Valuetopass)) {
+			}	else if (getDriver().findElement(By.name(sElement)).getDomProperty("value").contains(Valuetopass)) {
 				Reporting.pass(
 						"Value = \"" + Valuetopass + "\" is entered successfully in Textfield : \"" + fieldname + "\"");
 				BaseTest.logger.info(
@@ -193,14 +193,14 @@ public class Textfield extends SimpleLib {
 				hidePassword = true;
 			}
 
-			if ((getDriver().findElement(By.xpath(sElement)).getAttribute("value").contains(Valuetopass)) && (hidePassword) && !Valuetopass.isBlank()) {
+			if ((getDriver().findElement(By.xpath(sElement)).getDomProperty("value").contains(Valuetopass)) && (hidePassword) && !Valuetopass.isBlank()) {
 
 				Reporting.pass(
 						"Value = \"" + "XXXXXXXXXX" + "\" is entered successfully in Textfield : \"" + fieldname + "\"");
 				BaseTest.logger.info(
 						"Value = \"" + Valuetopass + "\" is entered successfully in Textfield : \"" + fieldname + "\"");
 
-			}	else if (getDriver().findElement(By.xpath(sElement)).getAttribute("value").contains(Valuetopass)) {
+			}	else if (getDriver().findElement(By.xpath(sElement)).getDomProperty("value").contains(Valuetopass)) {
 				Reporting.pass(
 						"Value = \"" + Valuetopass + "\" is entered successfully in Textfield : \"" + fieldname + "\"");
 				BaseTest.logger.info(
@@ -225,14 +225,14 @@ public class Textfield extends SimpleLib {
 				hidePassword = true;
 			}
 
-			if ((getDriver().findElement(By.cssSelector(sElement)).getAttribute("value").contains(Valuetopass)) && (hidePassword) && !Valuetopass.isBlank()) {
+			if ((getDriver().findElement(By.cssSelector(sElement)).getDomProperty("value").contains(Valuetopass)) && (hidePassword) && !Valuetopass.isBlank()) {
 
 				Reporting.pass(
 						"Value = \"" + "XXXXXXXXXX" + "\" is entered successfully in Textfield : \"" + fieldname + "\"");
 				BaseTest.logger.info(
 						"Value = \"" + Valuetopass + "\" is entered successfully in Textfield : \"" + fieldname + "\"");
 
-			}	else if (getDriver().findElement(By.cssSelector(sElement)).getAttribute("value").contains(Valuetopass)) {
+			}	else if (getDriver().findElement(By.cssSelector(sElement)).getDomProperty("value").contains(Valuetopass)) {
 				Reporting.pass(
 						"Value = \"" + Valuetopass + "\" is entered successfully in Textfield : \"" + fieldname + "\"");
 				BaseTest.logger.info(
@@ -465,16 +465,17 @@ public class Textfield extends SimpleLib {
 		switch (type) {
 
 		case ID:
-			sAttributeValue = getDriver().findElement(By.id(sElement)).getAttribute(sAttributeName);
+			sAttributeValue = getDriver().findElement(By.id(sElement)).getDomProperty(sAttributeName);
 			break;
 		case NAME:
-			sAttributeValue = getDriver().findElement(By.name(sElement)).getAttribute(sAttributeName);
+			sAttributeValue = getDriver().findElement(By.name(sElement)).getDomProperty(sAttributeName);
 			break;
 		case XPATH:
-			sAttributeValue = getDriver().findElement(By.xpath(sElement)).getAttribute(sAttributeName);
+//			sAttributeValue = getDriver().findElement(By.xpath(sElement)).getDomAttribute(sAttributeName);
+			sAttributeValue = getDriver().findElement(By.xpath(sElement)).getDomProperty(sAttributeName);
 			break;
 		case CSS:
-			sAttributeValue = getDriver().findElement(By.cssSelector(sElement)).getAttribute(sAttributeName);
+			sAttributeValue = getDriver().findElement(By.cssSelector(sElement)).getDomProperty(sAttributeName);
 			break;
 		}
 		return sAttributeValue;

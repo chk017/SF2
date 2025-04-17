@@ -18,6 +18,8 @@ import java.util.Set;
 import org.apache.commons.codec.binary.Base32;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.io.FileUtils;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.text.PDFTextStripper;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -211,6 +213,7 @@ public class Util extends BaseTest{
 	/**
 	 * this method look for the folder and creates if not found in the specified path.
 	 * @param sPath - Folder name
+	 * @author (chk017) kaja ChennnakesavaRao Bachu 
 	 */
 	public static void createFolder(String sPath) {
 
@@ -224,6 +227,7 @@ public class Util extends BaseTest{
 	 * This method will rename the file/folder by providing both old and new name parameters. Please note that, If you want to rename the file, it should have extensions as well. 
 	 * @param CurrentName - this is the Old name with complete Path
 	 * @param NewName     - this is the New name with complete Path
+	 * @author (chk017) kaja ChennnakesavaRao Bachu
 	 */
 	public static void renameFolder(String CurrentName, String NewName) {
 
@@ -242,6 +246,7 @@ public class Util extends BaseTest{
 	/**
 	 * This method will delete the file/folder specified as parameter. Here we have to pass the complete path of the file or folder. 
 	 * @param Path
+	 * @author (chk017) kaja ChennnakesavaRao Bachu
 	 */
 	public static void deleteFolder(String Path) {
 		try {
@@ -283,7 +288,12 @@ public class Util extends BaseTest{
 	}
 
 
-
+/**
+ * This method will convert a file to base64 in string format
+ * @param file
+ * @return String
+ * @author (chk017) kaja ChennnakesavaRao Bachu
+ */
 	public static String encodeFileToBase64Binary(File file){
 		String encodedfile = null;
 		try {
@@ -329,7 +339,7 @@ public class Util extends BaseTest{
 	/**
 	 * This method is used to get the One time pass code of Microsoft authenticator app by passing the secrete key as parameter. 
 	 * @param secretKey
-	 * @return
+	 * @return OTP 
 	 * @author (chk017) kaja ChennnakesavaRao Bachu
 	 */
 	public static String getTOTPCode(String secretKey) {
@@ -339,5 +349,104 @@ public class Util extends BaseTest{
         return TOTP.getOTP(hexKey);
     }
 	
+	/**
+	 * This method will generate a random number and return double
+	 * @return double
+	 * @author (chk017) kaja ChennnakesavaRao Bachu
+	 */
+	public static double randonNumber_Double() {
+		double num = Math.random();
+		return num*1001;
+	}
+	/**
+	 * This method will generate a random number and return 3 digit integer
+	 * @return
+ 	 * @author (chk017) kaja ChennnakesavaRao Bachu
+	 */
+	public static int randonNumber_int3digits() {
+		double num = Math.random();
+		double num2 = num*1001;
+		return (int) num2;
+	}
+	
+	/**
+	 * This method will generate a random number and return 5 digit integer
+	 * @return
+	 * @author (chk017) kaja ChennnakesavaRao Bachu
+	 */
+	public static int randonNumber_int5digits() {
+		double num = Math.random();
+		double num2 = num*100001;
+		return (int) num2;
+	}
+	
+	
+	public static String getpdfText(String filePath) {
+//	File file = new File("/path/to/your/existing_pdf_file.pdf");
+		File file = new File(filePath);
+		String pdfText = null;
+//    try (PDDocument document = PDDocument.load(file)) {
+	
+	try  {
+		PDDocument document = org.apache.pdfbox.Loader.loadPDF(file);
+        PDFTextStripper pdfStripper = new PDFTextStripper();
+        pdfText = pdfStripper.getText(document);
+        
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+	return pdfText;
+	}
+    
+	/*
+	public static String getPdfContent(String url) throws IOException {
+
+		 URL pdfURL = new URL(url);
+
+		 InputStream is = pdfURL.openStream();
+
+		 BufferedInputStream bis = new BufferedInputStream(is);
+
+		 PDDocument doc = PDDocument.load(bis);
+
+		 PDFTextStripper strip = new PDFTextStripper();
+
+		 String stripText = strip.getText(doc);
+
+		 System.out.println(stripText);
+
+		 doc.close();
+
+		 return stripText;
+
+		    }
+    
+    */
+	
+	/*
+	public static String getPdfContent(String url) throws IOException {
+
+		 URL pdfURL = new URL(url);
+
+		 InputStream is = pdfURL.openStream();
+
+		 BufferedInputStream bis = new BufferedInputStream(is);
+
+		 
+		 PDDocument doc = PDDocument.load(bis);
+
+		 PDFTextStripper strip = new PDFTextStripper();
+
+		 String stripText = strip.getText(doc);
+
+		 System.out.println(stripText);
+
+		 doc.close();
+
+		 return stripText;
+
+		    }
+*/
+		
 	
 }
