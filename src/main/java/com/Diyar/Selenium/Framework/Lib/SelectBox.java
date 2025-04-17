@@ -1,35 +1,36 @@
-    package com.Diyar.Selenium.Framework.Lib;
+//     package com.Diyar.Selenium.Framework.Lib;
 
-import com.Diyar.Selenium.Browser.Browser;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
+// import com.Diyar.Selenium.Browser.Browser;
+// import org.openqa.selenium.By;
+// import org.openqa.selenium.WebElement;
+// import org.openqa.selenium.support.ui.Select;
 
-public class SelectBox extends Select {
-   private static String locator = null;
-   private static Browser browser = new Browser();
+// public class SelectBox extends Select {
+  
+//    private static String locator = null;
+//    private static Browser browser = new Browser();
 
-   public SelectBox(String element) {
+//    public SelectBox(String element) {
 	   
-      // super(browser.getDriver().findElement(By.xpath(element)));
+//       // super(browser.getDriver().findElement(By.xpath(element)));
       
-      System.out.println("element : "+ element);
-   //   System.out.println("browser.getDriver().findElement(By.xpath(element)) : " + browser.getDriver().findElement(By.xpath(element))); 
+//       System.out.println("element : "+ element);
+//    //   System.out.println("browser.getDriver().findElement(By.xpath(element)) : " + browser.getDriver().findElement(By.xpath(element))); 
       
-      locator = element;
-   }
+//       locator = element;
+//    }
 
-   public WebElement getElement() {
-	    System.out.println("get element : "+ locator);
-	      System.out.println(" get web elem : " + browser.getDriver().findElement(By.xpath(locator)));
+//    public WebElement getElement() {
+// 	   //  System.out.println("get element : "+ locator);
+// 	      // System.out.println(" get web elem : " + browser.getDriver().findElement(By.xpath(locator)));
 
-      return browser.getDriver().findElement(By.xpath(locator));
-   }
+//       return browser.getDriver().findElement(By.xpath(locator));
+//    }
 
-   public String locator() {
-      return locator;
-   }
-}
+//    public String locator() {
+//       return locator;
+//    } 
+// }
 
 
 
