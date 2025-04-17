@@ -11,10 +11,10 @@ public class SelectBox extends Select {
 
    public SelectBox(String element) {
 	   
-      super(browser.getDriver().findElement(By.xpath(element)));
+      // super(browser.getDriver().findElement(By.xpath(element)));
       
       System.out.println("element : "+ element);
-      System.out.println("browser.getDriver().findElement(By.xpath(element)) : " + browser.getDriver().findElement(By.xpath(element)));
+   //   System.out.println("browser.getDriver().findElement(By.xpath(element)) : " + browser.getDriver().findElement(By.xpath(element))); 
       
       locator = element;
    }
